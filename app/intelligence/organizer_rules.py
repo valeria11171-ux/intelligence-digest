@@ -16,13 +16,14 @@ def infer_category(pub: Publication) -> str:
     return "Инфо"
 
 
-def organizer_importance(pub: Publication) -> tuple[float, list[str]]:
+def organizer_importance(pub: Publication, boost: bool = True) -> tuple[float, list[str]]:
+    """boost=False — универсальный режим (без приоритета РФ/энергетики/КИИ)."""
     text = f" {pub.title} {pub.text}".lower()
     cat = infer_category(pub)
     reasons: list[str] = []
     score = 0.45
-    if any(x in text for x in RUSSIA): score += .15; reasons.append("РФ")
-    if any(x in text for x in ENERGY): score += .20; reasons.append("энергетика/КИИ/промышленность")
+    if boost and any(x in text for x in RUSSIA): score += .15; reasons.append("РФ")
+    if boost and any(x in text for x in ENERGY): score += .20; reasons.append("энергетика/КИИ/промышленность")
     if cat == "Уязвимость" and any(x in text for x in EXPLOIT): score += .20; reasons.append("есть exploit/PoC")
     if any(x in text for x in ("critical", "критичес", "cvss 9", "cvss: 9", "cvss 10")): score += .10; reasons.append("критическая тяжесть")
     return min(score, 1.0), reasons

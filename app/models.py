@@ -1,5 +1,6 @@
 from datetime import datetime
-from pydantic import BaseModel, Field, HttpUrl
+from typing import Literal
+from pydantic import BaseModel, Field
 
 class Publication(BaseModel):
     id: str
@@ -9,6 +10,15 @@ class Publication(BaseModel):
     published_at: datetime | None = None
     text: str = ""
     language: str | None = None
+    source_trust: float = 0.8
+
+class Source(BaseModel):
+    """Источник материалов. kind: rss | telegram | page."""
+    name: str
+    url: str
+    kind: Literal["rss", "telegram", "page"] = "rss"
+    trust: float = Field(default=0.8, ge=0, le=1)
+    enabled: bool = True
 
 class UserProfile(BaseModel):
     role: str = "security_engineer"
@@ -39,3 +49,7 @@ class DigestEvent(BaseModel):
     sources: list[str]
     reasons: list[str] = Field(default_factory=list)
     details: dict = Field(default_factory=dict)
+    topic: str = ""
+    evidence: str = ""
+    links: list[dict] = Field(default_factory=list)  # {title,url,source,published_at}
+    published_at: datetime | None = None

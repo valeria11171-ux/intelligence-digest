@@ -1,0 +1,15 @@
+# Источники по умолчанию. Пользователь может добавлять свои прямо в интерфейсе
+# (RSS, сайт с автопоиском RSS, публичный Telegram-канал, отдельная страница).
+# kind: rss | telegram | page   trust: 0..1 (доверие к источнику, влияет на скоринг)
+sources:
+  - {name: The Hacker News,      url: "https://feeds.feedburner.com/TheHackersNews",            kind: rss, trust: 0.80}
+  - {name: BleepingComputer,     url: "https://www.bleepingcomputer.com/feed/",                 kind: rss, trust: 0.85}
+  - {name: Krebs on Security,    url: "https://krebsonsecurity.com/feed/",                      kind: rss, trust: 0.90}
+  - {name: CISA Advisories,      url: "https://www.cisa.gov/cybersecurity-advisories/all.xml",  kind: rss, trust: 0.95}
+  - {name: Microsoft MSRC,       url: "https://msrc.microsoft.com/blog/feed/",                  kind: rss, trust: 0.95}
+  - {name: Xakep.ru,             url: "https://xakep.ru/feed/",                                 kind: rss, trust: 0.80}
+  - {name: SecurityLab.ru,       url: "https://www.securitylab.ru/_services/export/rss/",       kind: rss, trust: 0.80}
+  - {name: OpenNet,              url: "https://www.opennet.ru/opennews/opennews_all.rss",       kind: rss, trust: 0.75}
+  - {name: Kubernetes Blog,      url: "https://kubernetes.io/feed.xml",                         kind: rss, trust: 0.90}
+  - {name: Telegram — Secator,   url: "https://t.me/s/true_secator",                            kind: telegram, trust: 0.70}
+  - {name: Telegram — Leonov,    url: "https://t.me/s/avleonovcom",                             kind: telegram, trust: 0.75}

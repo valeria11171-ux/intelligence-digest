@@ -1,27 +1,44 @@
-# Intelligence Digest — cio
+# Ежемесячный дайджест ИТ/ИБ — Руководитель
 
-Интересы: AI, cloud, regulation, digital transformation
+*Сформирован: 15.10.2026 03:00 · период: Месяц*  
+*Интересы: AI, cloud, regulation, утечка*
 
-## Enterprise AI adoption accelerates in regulated industries
+## Ключевые цифры
+
+- Событий в дайджесте: **2** (на основе 2 публикаций)
+- Уязвимости: **0**, атаки и инциденты: **0**, с публичным exploit/PoC: **0**
+
+## Главное
+
+1. **Enterprise AI adoption accelerates in regulated industries** — Соответствует интересам руководителя
+2. **Cloud transformation changes enterprise operating models** — Соответствует интересам руководителя
+
+## AI
+
+### Enterprise AI adoption accelerates in regulated industries
+
+*Инфо · релевантность 80%*
 
 AI and LLM adoption grows as enterprises establish governance and regulation controls.
 
-**Почему важно:** Соответствует интересам роли cio
+**Почему важно:** Соответствует интересам руководителя
 
-**Score:** 81%
-**Причины отбора:** AI, regulation
+> AI and LLM adoption grows as enterprises establish governance and regulation controls.
 
-**Источники:**
-- https://example.org/enterprise-ai
+**Источники (1):**
+- [Tech Research: Enterprise AI adoption accelerates in regulated industries](https://example.org/enterprise-ai)
 
-## Cloud transformation changes enterprise operating models
+## cloud
+
+### Cloud transformation changes enterprise operating models
+
+*Инфо · релевантность 77%*
 
 Cloud platforms and digital transformation are changing enterprise operating models.
 
-**Почему важно:** Соответствует интересам роли cio
+**Почему важно:** Соответствует интересам руководителя
 
-**Score:** 81%
-**Причины отбора:** cloud, digital transformation
+> Cloud platforms and digital transformation are changing enterprise operating models.
 
-**Источники:**
-- https://example.org/cloud
+**Источники (1):**
+- [IT Strategy: Cloud transformation changes enterprise operating models](https://example.org/cloud)

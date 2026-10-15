@@ -1,39 +1,34 @@
-# Intelligence Digest — security_engineer
+# Ежедневный дайджест ИТ/ИБ — ИБ / ИТ специалист
 
-Интересы: CVE, Microsoft, Kubernetes, ransomware
+*Сформирован: 15.10.2026 03:00 · период: День*  
+*Интересы: CVE, уязвимость, ransomware, эксплойт*
 
-## Critical CVE in Microsoft Exchange allows remote code execution
+## CVE
+
+### Critical CVE in Microsoft Exchange allows remote code execution
+
+*Уязвимость · релевантность 79%*
 
 A critical CVE affecting Microsoft Exchange may allow remote code execution. Administrators should patch affected systems.
 
-**Почему важно:** Соответствует интересам роли security_engineer
+**Почему важно:** Совпадает с интересами: CVE
 
-**Score:** 84%
-**Причины отбора:** CVE, Microsoft, критическая тяжесть
+> A critical CVE affecting Microsoft Exchange may allow remote code execution.
 
-**Источники:**
-- https://example.org/exchange-cve
+**Источники (1):**
+- [Vendor Advisory: Critical CVE in Microsoft Exchange allows remote code execution](https://example.org/exchange-cve)
 
-## Researchers report ransomware campaign targeting enterprise infrastructure
+## ransomware
+
+### Researchers report ransomware campaign targeting enterprise infrastructure
+
+*Атака · релевантность 77%*
 
 A ransomware campaign targets enterprise infrastructure and Windows servers.
 
-**Почему важно:** Массово используемый сервис
+**Почему важно:** Совпадает с интересами: ransomware
 
-**Score:** 61%
-**Причины отбора:** ransomware
+> A ransomware campaign targets enterprise infrastructure and Windows servers.
 
-**Источники:**
-- https://example.org/ransomware
-
-## Kubernetes security update fixes authentication vulnerability
-
-Kubernetes maintainers released a security update fixing a vulnerability in authentication components.
-
-**Почему важно:** Соответствует интересам роли security_engineer
-
-**Score:** 61%
-**Причины отбора:** Kubernetes
-
-**Источники:**
-- https://example.org/k8s
+**Источники (1):**
+- [Security News: Researchers report ransomware campaign targeting enterprise infrastructure](https://example.org/ransomware)

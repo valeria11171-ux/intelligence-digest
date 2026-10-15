@@ -4,22 +4,24 @@
 
 ## Что реализовано
 
-- ingestion: RSS и отдельные HTML-страницы (`app/ingestion/connectors.py`);
-- offline demo corpus для гарантированной демонстрации без сети/API;
-- lexical + TF-IDF semantic retrieval;
-- organizer-aware scoring: РФ, энергетика/КИИ/SCADA, exploit/PoC, critical severity;
-- дедупликация и semantic event clustering;
-- два output-contract: **ИБ/ИТ специалист** и **руководитель**;
-- structured extraction: категория, CVE, CVSS, наличие exploit/PoC;
-- executive multi-label tagging по таксономии организаторов;
-- explainability: score + причины отбора + первоисточники;
-- feedback primitive для изменения interest profile;
-- Markdown и DOCX export;
-- Streamlit UI и FastAPI;
-- OpenAI-compatible LLM adapter: модель заменяется конфигурацией без изменения pipeline;
-- golden dataset организаторов: 21 пример (10 technical + 11 executive);
-- evaluation utilities: Precision@K, Recall@K, NDCG@K, duplicate reduction;
-- 7 автоматических тестов.
+- **Источники, которые добавляет сам пользователь**: ссылка на сайт (RSS находится автоматически), RSS/Atom, публичный Telegram-канал (`t.me/канал`, `@канал`), отдельная статья. Тип определяется сам, источник проверяется перед добавлением; у каждого источника виден статус, число материалов и ошибка; сбой одного не ломает остальные (`app/sources.py`, `configs/sources.yaml`);
+- **собственные интересы**: любые слова и фразы на русском и английском (русская морфология: «уязвимость» находит «уязвимости»); каждый интерес становится тематическим разделом дайджеста;
+- **период**: день / неделя / месяц (ежедневный для специалистов, ежемесячный для руководства);
+- **обратная связь 👍/👎**: меняет веса интересов и подстраивает отбор под похожие материалы; профиль сохраняется в JSON;
+- группировка публикаций об одном событии (общий CVE или тематическая близость), дедупликация;
+- **доказуемость**: у каждого события ссылки на все первоисточники с датой и цитата-основание из текста;
+- Markdown и DOCX (с кликабельными ссылками), веб-интерфейс Streamlit, CLI, FastAPI;
+- структурное извлечение: CVE, CVSS, exploit/PoC; бизнес-теги для руководителя;
+- режим «Приоритет РФ / энергетика / КИИ» включается по желанию (по умолчанию ассистент универсальный);
+- golden dataset организаторов, метрики Precision@K/Recall@K/NDCG@K, 16 автотестов (включая сквозной тест с локальным RSS-сервером и тест интерфейса).
+
+### CLI
+
+```
+python -m app.cli --audience tech --period day   --interests "CVE,Exchange,Kubernetes" --out artifacts/daily.md --docx
+python -m app.cli --audience mgmt --period month --add-source https://t.me/true_secator --out artifacts/monthly.md
+python -m app.cli --demo        # без сети
+```
 
 ## Быстрый запуск
 

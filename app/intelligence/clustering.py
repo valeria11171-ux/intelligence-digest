@@ -24,3 +24,31 @@ def cluster_by_topic(publications: list[Publication], threshold: float=.88) -> d
     for n,items in enumerate(clusters,1):
         base=label(items); key=base if base not in out else f'{base}-{n}'; out[key]=items
     return out
+
+
+_CVE_RE = re.compile(r"CVE-\d{4}-\d{4,7}", re.I)
+
+
+def cluster_events(publications: list[Publication], threshold: float = .5) -> list[list[Publication]]:
+    """Объединяет публикации об одном событии: общий CVE ИЛИ высокая тематическая близость
+    (union-find, поэтому транзитивно). Работает для RU и EN."""
+    n = len(publications)
+    if n <= 1:
+        return [list(publications)] if n else []
+    docs = [f"{p.title} {p.title} {p.text[:800]}" for p in publications]
+    X = TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True, min_df=1, max_features=20000).fit_transform(docs)
+    sim = cosine_similarity(X)
+    cves = [set(c.upper() for c in _CVE_RE.findall(f"{p.title} {p.text}")) for p in publications]
+    parent = list(range(n))
+    def find(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]; i = parent[i]
+        return i
+    for i in range(n):
+        for j in range(i + 1, n):
+            if sim[i, j] >= threshold or (cves[i] & cves[j]):
+                parent[find(j)] = find(i)
+    groups: dict[int, list[Publication]] = defaultdict(list)
+    for i, p in enumerate(publications):
+        groups[find(i)].append(p)
+    return list(groups.values())
